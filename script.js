@@ -17,7 +17,7 @@ function playerThrow(playerChoice) {
     if (playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
         return playerChoice
     } else {
-        window.alert('Error! Please choose rock, paper or scissors');
+        console.log('Error! Please choose rock, paper or scissors');
     }
 }
 
@@ -33,30 +33,30 @@ function playRound(playerSelection, computerSelection){
 
     if (playerSelection === 'rock'){
         if (computerSelection === 'paper'){
-            computerScore += 1;
+            computerScore++;
             return "You lose! Paper beats rock.";
         } else {
-            playerScore += 1;
+            playerScore++;
             return "You win! Rock beats scissors!";
         }
     }
 
     if (playerSelection === 'paper'){
         if (computerSelection === 'scissors'){
-            computerScore += 1;
+            computerScore++;
             return 'You lose! Scissors beats paper.';
         } else {
-            playerScore += 1;
+            playerScore++;
             return 'You win! Paper beats rock!';
             }
         }
 
     if(playerSelection === 'scissors'){
         if (computerSelection === 'rock'){
-            computerScore += 1;
+            computerScore ++;
             return 'You lose! Rock beats scissors.';
         } else {
-            playerScore += 1 ;
+            playerScore ++;
             return 'You win! Scissors beats paper!';
         }
     }
@@ -120,3 +120,5 @@ function playMatch(){
 
 playMatch();
 
+
+// nice solution ref: https://github.com/bassart94/rockpaperscissors/blob/master/INDEX.html
