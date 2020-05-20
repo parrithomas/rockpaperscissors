@@ -34,91 +34,58 @@ function playRound(playerSelection, computerSelection){
     if (playerSelection === 'rock'){
         if (computerSelection === 'paper'){
             computerScore++;
-            return "You lose! Paper beats rock.";
+            return "Paper beats rock. You lose! ";
         } else {
             playerScore++;
-            return "You win! Rock beats scissors!";
+            return "Rock beats scissors! You win! ";
         }
     }
 
     if (playerSelection === 'paper'){
         if (computerSelection === 'scissors'){
             computerScore++;
-            return 'You lose! Scissors beats paper.';
+            return 'Scissors beats paper. You lose!';
         } else {
             playerScore++;
-            return 'You win! Paper beats rock!';
+            return 'Paper beats rock! You win!';
             }
         }
 
     if(playerSelection === 'scissors'){
         if (computerSelection === 'rock'){
-            computerScore ++;
-            return 'You lose! Rock beats scissors.';
+            computerScore++;
+            return 'Rock beats scissors. You lose!';
         } else {
-            playerScore ++;
-            return 'You win! Scissors beats paper!';
+            playerScore++;
+            return 'Scissors beats paper! You win!';
         }
     }
 }
 
+function game(){
+    for (let noOfRounds = 1; noOfRounds<6; noOfRounds++) { // loop through five rounds
+        console.log('Round: ' + noOfRounds + " ... FIGHT!"); // display round number
 
+        let playerSelection = playerThrow(prompt("Rock, paper or scissors?","")); // player select
+        let computerSelection = computerPlay(); // computer selects
 
-// let playerSelection = playerThrow(prompt("Rock, paper or scissors?","")); // takes player's choice and assigns to a variable 
-/*
-// print result
-console.log(`The player chose: ${playerSelection}`);
-console.log(`The computer chose: ${computerSelection}`);
-console.log(playRound(playerSelection, computerSelection));
-console.log(`Player: ${playerScore} // Computer ${computerScore}`)
-*/
-
-function playMatch(){
-    playerSelection = playerThrow(prompt("Rock, paper or scissors?","")); // user choice
-    computerSelection = computerPlay(); // computer choice 
-    playRound(playerSelection, computerSelection); // run the game
-    console.log(`The player chose: ${playerSelection} // The computer chose: ${computerSelection}`); // display choices
-
-    console.log(`Player: ${playerScore} // Computer ${computerScore}`) // display current score
-
-    playerSelection = playerThrow(prompt("Rock, paper or scissors?",""));
-    computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-    console.log(`The player chose: ${playerSelection} // The computer chose: ${computerSelection}`);
-    console.log(`Player: ${playerScore} // Computer ${computerScore}`)
-
-    playerSelection = playerThrow(prompt("Rock, paper or scissors?",""));
-    computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-    console.log(`The player chose: ${playerSelection} // The computer chose: ${computerSelection}`);
-    console.log(`Player: ${playerScore} // Computer ${computerScore}`)
-
-    playerSelection = playerThrow(prompt("Rock, paper or scissors?",""));
-    computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-    console.log(`The player chose: ${playerSelection} // The computer chose: ${computerSelection}`);
-    console.log(`Player: ${playerScore} // Computer ${computerScore}`)
-
-    playerSelection = playerThrow(prompt("Rock, paper or scissors?",""));
-    computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-    console.log(`The player chose: ${playerSelection} // The computer chose: ${computerSelection}`);
-    console.log(`Player: ${playerScore} // Computer ${computerScore}`)
-
-    if (playerScore === computerScore) {
-        console.log(`The game is tied ${playerScore} to ${computerScore}. Everyone is a loser.`);  
-    } else if (playerScore > computerScore) {
-        console.log(`You are the winner! ${playerScore} to ${computerScore}`);
-    } else {
-        console.log(`Sorry you are the loser. ${playerScore} to ${computerScore}`);
-    }
-
+        console.log(`You threw a ${playerSelection}.  The computer threw a ${computerSelection}`) // displays selections
+        let round_result = playRound(playerSelection, computerSelection); // plays game and returns outcome to a variable
+        console.log(round_result); // display game outcome now stored in variable
+        let currentScore = (`Player 1: ${playerScore} // Computer: ${computerScore}`) ;
+        console.log(currentScore) // display current score
         
-
     }
 
+    
+    console.log(`Final Scores... Player 1: ${playerScore} // Computer: ${computerScore}`);
+    if (playerScore === computerScore) {
+        console.log('The game is a tie. If nobody wins, I guess everyone is a loser.')
+    } else if (playerScore > computerScore) {
+        console.log('You won!');
+    } else {
+        console.log('You lost. Try harder.');
+    }
+}
 
-playMatch();
-
-
-// nice solution ref: https://github.com/bassart94/rockpaperscissors/blob/master/INDEX.html
+game();
